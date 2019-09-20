@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 //import React from 'react';
-import logo from './logo.svg';
+//import logo from './logo.svg';
 import './App.css';
-
 import firebase from 'firebase';
 import { DB_CONFIG } from './config/config';
 import 'firebase/database';
-
 import Note from './Note/Note';
 import NoteForm from './NoteForm/NoteForm';
+import img from './img/logo3.svg.svg'
 
 //function App() {
 class App extends Component {
@@ -26,6 +25,7 @@ class App extends Component {
     this.db = this.app.database().ref().child('notes');
 
     this.addNote = this.addNote.bind(this);
+    this.removeNote = this.removeNote.bind(this);
   }
 
   componentDidMount() {
@@ -37,19 +37,29 @@ class App extends Component {
       })
       this.setState({notes});
     });
+    this.db.on('child_removed', snap =>{
+      for(let i = 0; i < notes. length; i++){
+        if(notes[i].noteId = snap.key) {
+          notes.splice(i, 1);
+        }
+      }
+      this.setState({notes});
+    });
   }
 
-  removeNote() {
-
+  removeNote(noteId) {
+    this.db.child(noteId).remove();
   }
 
-  addNote(note) {
-    let { notes } = this.state;
+  addNote(note) { //AGREGA LAS NOTAS MANUALMENTE!!
+    /*let { notes } = this.state;
     notes.push({
       noteId: notes.length + 1,
       noteContent: note
-    });
-    this.setState({ notes });
+    });*/
+    this.setState({ note });
+
+    this.db.push().set({noteContent: note});
 
   }
 
@@ -58,7 +68,8 @@ class App extends Component {
       <div className="notesContainer">
 
         <div className="notesHeader">
-          <h1>YES or Note</h1>
+        <img src={img} className="App-logo" alt="logo" />
+        <h3>Where the good ideas goes</h3>
         </div>
         <div className="notesBody">
           <ul>
@@ -69,6 +80,7 @@ class App extends Component {
                     noteContent={note.noteContent}
                     noteId={note.noteId}
                     key={note.noteId}
+                    removeNote={this.removeNote}
                   />
                 )
               })

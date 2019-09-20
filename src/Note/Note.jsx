@@ -9,7 +9,11 @@ class Note extends Component {
 	}
 
 	handleRemove(id) {
-
+		const response = window.confirm('Are you sure that you want to delete it?')
+		if (response) {
+			this.props.removeNote(id);
+		}
+		return;
 	}
 
 	render () {
@@ -17,7 +21,6 @@ class Note extends Component {
 			<div className="Note">
 				<span
 				onClick={() => this.handleRemove(this.noteId) }
-				
 				>&times;</span>
 				<p>{this.noteContent}</p>
 			</div>

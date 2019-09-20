@@ -1,5 +1,8 @@
-.NoteForm input [type="text"] {
-  padding: 20px;
+.writeNote {
+	padding: 20px 80px;
+	font-family: 'Cormorant Garamond', serif;
+	font-weight: bold;
+	font-size: 20px;
 }
 
 .NoteForm button {
@@ -7,8 +10,11 @@
 	color: #fff;
 	background: #402f30;
 	border: none;
+	font-family: 'Cormorant Garamond', serif;
+	/*font-weight: bold;*/
+	font-size: 20px;
 }
 
 .NoteForm button:hover {
-	background-color: #bf656d;
+	background-color: #8f4a6a;
 }

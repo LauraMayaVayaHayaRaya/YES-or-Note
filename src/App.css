@@ -3,29 +3,46 @@ body {
   text-align: center;
 }
 
+.App-logo{
+  height: 120px;
+  display: inline-block;
+}
+
+h3 {
+font-family: 'Dawning of a New Day', cursive;;
+color: #b35f86;
+font-size: 50px;
+display: inline-block;
+}
+
 * {
   padding: 0;
   margin: 0;
 }
 
-.notesHeader, .notesBody, .notesFooter {
+.notesBody, .notesFooter {
   background-color: rgba(0, 0, 0, .5);
   padding: 20px;
   margin: 0;
-
 }
 
 .notesHeader {
   font-family: 'Cormorant Garamond', serif;
   color: #fff;
+  text-align: left;
+  max-width: 1000px;
+  margin: 40px auto 0 auto;
 }
 
 .notesBody, .notesFooter {
-  font-family: 'Karla', sans-serif;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  /*font-family: 'Karla', sans-serif;*/
 }
 
 .notesBody {
-  margin-top: 20px;
+  max-width: 1000px;
+  margin: 40px auto 0 auto;
 }
 
 .notesFooter {

@@ -17,7 +17,7 @@ class NoteForm extends Component {
 	render() {
 		return(
 			<div className="NoteForm">
-				<input
+				<input className="writeNote"
 					ref={input => {this.textInput = input;}}
 					placeholder="Write a Note"
 					type="text"/>
